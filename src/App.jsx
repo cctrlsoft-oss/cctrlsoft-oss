@@ -1,5 +1,6 @@
 import { useState } from "react";
-import HelloWorld from "./components/HelloWorld";
+import './App.css'
+import Home from "./components/home"; // aquí renombramos HelloWorld a Home
 import LoginPage from "./pages/LoginPage";
 
 export default function App() {
@@ -10,7 +11,7 @@ export default function App() {
       {showLogin ? (
         <LoginPage onBackClick={() => setShowLogin(false)} />
       ) : (
-        <HelloWorld onLoginClick={() => setShowLogin(true)} />
+        <Home onLoginClick={() => setShowLogin(true)} />
       )}
     </div>
   );
