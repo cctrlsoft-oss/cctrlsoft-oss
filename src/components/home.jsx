@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home({ onLoginClick }) {
   return (
     <section className="bg-black text-white flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-12 overflow-hidden">
       {/* Izquierda */}
@@ -20,16 +20,22 @@ export default function Home() {
           que tu marca trascienda fronteras en el universo digital.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 mb-4">
           <div className="flex items-center gap-2 bg-[#2A273F] rounded-full px-6 py-3 shadow-lg">
             <span className="text-white text-sm font-medium">24/7 Soporte</span>
           </div>
           <div className="flex items-center gap-2 bg-[#2A273F] rounded-full px-6 py-3 shadow-lg">
-            <span className="text-white text-sm font-medium">
-              Personalizado
-            </span>
+            <span className="text-white text-sm font-medium">Personalizado</span>
           </div>
         </div>
+
+        {/* Botón para ir al login */}
+        <button
+          onClick={onLoginClick}
+          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full"
+        >
+          Ir al Login
+        </button>
       </div>
 
       {/* Derecha */}
@@ -44,6 +50,5 @@ export default function Home() {
         </div>
       </div>
     </section>
-
   );
 }
