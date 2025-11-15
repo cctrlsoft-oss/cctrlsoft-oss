@@ -1,24 +1,14 @@
 import LoginForm from "../components/LoginForm/LoginForm";
 
-export default function LoginPage({ onBackClick }) {
-  const handleLogin = (credentials) => {
-    alert(`Usuario: ${credentials.email}`);
-  };
-
+export default function LoginPage({ onBackClick, onLoginSuccess }) {
   return (
     <div>
-      <h2>CTRLSOFT</h2>
-      <LoginForm onLogin={handleLogin} />
-
+      <LoginForm onLogin={onLoginSuccess} />
       <button
+        className="btn btn-secondary mt-3"
         onClick={onBackClick}
-        style={{
-          marginTop: "1rem",
-          padding: "0.5rem 1rem",
-          cursor: "pointer",
-        }}
       >
-        Volver
+        Volver al inicio
       </button>
     </div>
   );
