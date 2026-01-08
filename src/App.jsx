@@ -52,15 +52,8 @@ export default function App() {
 
   // Si no está autenticado
   return (
-    <div style={{ padding: "2rem", textAlign: "center" }}>
-      {showLogin ? (
-        <LoginPage 
-          onBackClick={() => setShowLogin(false)}
-          onLoginSuccess={handleLoginSuccess}
-        />
-      ) : (
-        <Home onLoginClick={() => setShowLogin(true)} />
-      )}
-    </div>
-  );
+    <>
+      <Home />
+    </>
+  )
 }
