@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Home({ onLoginClick }) {
   return (
 <section className="bg-dark vh-100 text-white" id="home-section">
   <div className="container-fluid">
@@ -58,6 +58,14 @@ export default function Home() {
             </div>
           </div>
         </div>
+
+        {/* Botón para ir al login */}
+        <button
+          onClick={onLoginClick}
+          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full"
+        >
+          Ir al Login
+        </button>
       </div>
 
       {/* <!-- Derecha --> */}
