@@ -18,20 +18,13 @@ export default function Home({ onLoginSuccess }) {
             paddingTop: "2rem"
           }}
         >
-          <div className="position-relative">
-            <button
-              onClick={() => setShowLogin(false)}
-              className="btn-close btn-close-white position-absolute top-0 end-0"
-              style={{ transform: "translate(50%, -50%)" }}
-              aria-label="Cerrar"
-            ></button>
-            <LoginForm 
-              onLogin={(data) => {
-                onLoginSuccess(data);
-                setShowLogin(false);
-              }} 
-            />
-          </div>
+          <LoginForm 
+            onLogin={(data) => {
+              onLoginSuccess(data);
+              setShowLogin(false);
+            }}
+            onClose={() => setShowLogin(false)}
+          />
         </div>
       )}
 
