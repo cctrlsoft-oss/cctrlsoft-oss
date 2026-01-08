@@ -3,7 +3,7 @@ import "./LoginForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { authService } from "../../services/authService";
 
-export default function LoginForm({ onLogin }) {
+export default function LoginForm({ onLogin, onClose }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -26,7 +26,7 @@ export default function LoginForm({ onLogin }) {
 
   return (
     <form 
-      className="p-4 bg-dark text-white rounded shadow-lg" 
+      className="p-4 bg-dark text-white rounded shadow-lg position-relative"
       onSubmit={handleSubmit} 
       style={{ 
         maxWidth: "400px", 
@@ -34,6 +34,15 @@ export default function LoginForm({ onLogin }) {
         border: "1px solid rgba(226, 169, 241, 0.3)"
       }}
     >
+      
+      <button
+        type="button"
+        className="btn-close btn-close-white position-absolute"
+        style={{ top: "15px", right: "15px", zIndex: 10 }}
+        aria-label="Cerrar"
+        onClick={onClose}
+      ></button>
+
       <h2 className="text-center mb-4 color-pink-ctrlsoft">Iniciar sesión</h2>
 
       {error && (
