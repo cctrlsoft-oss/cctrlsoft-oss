@@ -1,0 +1,29 @@
+
+.btn-purple-ctrlsoft {
+  background-color: #3e3c73 !important;
+  color: #ffffff !important;
+  border: none !important;
+}
+
+.border-purple {
+  border-color: #292849 !important;
+}
+
+.check-icon {
+  font-weight: 900 !important;
+  color: #12cd47 !important;
+  -webkit-text-stroke: 2px #12cd47 !important;
+  text-stroke: 2px #12cd47 !important;
+}
+
+.font-open-sans {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.font-agrandir {
+  font-family: 'Agrandir', sans-serif !important;
+}
+
+.color-pink-ctrlsoft {
+  color: #e2a9f1 !important;
+}
