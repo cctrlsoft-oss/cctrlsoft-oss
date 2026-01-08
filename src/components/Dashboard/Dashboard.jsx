@@ -122,6 +122,14 @@ export default function Dashboard({ onLogout }) {
               </a>
             </nav>
           )}
+          
+          {/* Logout Button */}
+          <div className="sidebar-footer">
+            <button className="logout-btn" onClick={handleLogout} title="Cerrar Sesión">
+              <span className="material-symbols-outlined">logout</span>
+              {!isSidebarCollapsed && <span>Cerrar Sesión</span>}
+            </button>
+          </div>
         </aside>
         {/* Main Content */}
         <main className="dashboard-main">
