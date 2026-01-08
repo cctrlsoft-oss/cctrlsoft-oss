@@ -7,7 +7,7 @@ export default function Home({ onLoginSuccess }) {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
-    <section className="bg-dark text-white min-vh-100" id="home-section" style={{ position: "relative" }}>
+    <section className="bg-dark text-white min-vh-100" id="home-section" style={{ position: "relative", overflow: "hidden" }}>
       {/* Login Form - Top Center */}
       {showLogin && (
         <div 
@@ -43,15 +43,16 @@ export default function Home({ onLoginSuccess }) {
         </div>
       </div>
 
-      <div className="container-fluid px-4">
-        <div className="row align-items-start justify-content-between g-4">
+      <div className="container-fluid px-4" style={{ position: "relative" }}>
+        <div className="row align-items-center justify-content-between g-4" style={{ minHeight: "calc(100vh - 120px)", position: "relative" }}>
 
           {/* Panel Izquierdo - animacion 3D */}
-          <div className="col-12 col-lg-3 col-xl-2">
+          <div className="col-12 col-lg-3 col-xl-2 d-flex align-items-center justify-content-center">
             <div 
-              className="rounded-4 p-4 text-center h-100 d-flex align-items-center justify-content-center"
+              className="rounded-4 p-4 text-center d-flex align-items-center justify-content-center"
               style={{ 
                 backgroundColor: "#2a2838",
+                width: "100%",
                 minHeight: "clamp(300px, 40vh, 400px)",
                 position: "relative"
               }}
@@ -78,39 +79,40 @@ export default function Home({ onLoginSuccess }) {
           </div>
 
           {/* Centro - Desarrollo Web y CtrlSoft */}
-          <div className="col-12 col-lg-6 col-xl-7 text-center text-lg-start">
-            <div className="d-flex align-items-center gap-3 mb-3">
-              <h3 className="color-pink-ctrlsoft fw-semibold mb-0" style={{ fontSize: "1.5rem" }}>
-                Desarrollo Web
-              </h3>
-              <hr 
-                className="flex-grow-1 m-0" 
+          <div className="col-12 col-lg-6 col-xl-7 d-flex align-items-center justify-content-center">
+            <div className="text-center text-lg-start w-100">
+              <div className="d-flex align-items-center gap-3 mb-3">
+                <h3 className="color-pink-ctrlsoft fw-semibold mb-0" style={{ fontSize: "1.5rem" }}>
+                  Desarrollo Web
+                </h3>
+                <hr 
+                  className="flex-grow-1 m-0" 
+                  style={{ 
+                    border: "none", 
+                    borderTop: "2px solid #e2a9f1", 
+                    opacity: "1" 
+                  }}
+                />
+              </div>
+              
+              <h1 
+                className="fw-bold text-white mb-4"
                 style={{ 
-                  border: "none", 
-                  borderTop: "2px solid #e2a9f1", 
-                  opacity: "1" 
+                  fontSize: "clamp(3rem, 8vw, 8rem)",
+                  lineHeight: "1.1"
                 }}
-              />
-            </div>
-            
-            <h1 
-              className="fw-bold text-white mb-4"
-              style={{ 
-                fontSize: "clamp(3rem, 8vw, 8rem)",
-                lineHeight: "1.1"
-              }}
-            >
-              CtrlSoft
-            </h1>
-            
-            <p className="text-light mb-4 font-open-sans" style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
-              Tu negocio tiene potencial para llegar más lejos. Con un sitio web
-              profesional, conecta con más personas, expande tus oportunidades y haz
-              que tu marca trascienda fronteras en el universo digital.
-            </p>
+              >
+                CtrlSoft
+              </h1>
+              
+              <p className="text-light mb-4 font-open-sans" style={{ fontSize: "1.1rem", lineHeight: "1.6" }}>
+                Tu negocio tiene potencial para llegar más lejos. Con un sitio web
+                profesional, conecta con más personas, expande tus oportunidades y haz
+                que tu marca trascienda fronteras en el universo digital.
+              </p>
 
-            {/* Botones 24/7 Soporte y Personalizado */}
-            <div className="d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3 mb-4">
+              {/* Botones 24/7 Soporte y Personalizado */}
+              <div className="d-flex flex-column flex-sm-row justify-content-center gap-3 mb-4">
               <div className="btn-purple-ctrlsoft rounded-pill shadow-sm p-1" style={{ width: "fit-content" }}>
                 <div className="bg-transparent border border-2 border-purple rounded-pill px-4 py-2 position-relative d-flex align-items-center justify-content-center">
                   <span className="text-white fw-medium" style={{ paddingRight: "30px" }}>
@@ -151,15 +153,21 @@ export default function Home({ onLoginSuccess }) {
                 </div>
               </div>
             </div>
+            </div>
           </div>
 
           {/* Derecha - Imagen con laptop y smartphone */}
-          <div className="col-12 col-lg-3 col-xl-3 position-relative">
+          <div className="col-12 col-lg-3 col-xl-3 position-relative" style={{ paddingRight: "0" }}>
             <div 
-              className="position-relative d-flex justify-content-end"
+              className="position-fixed d-flex justify-content-end"
               style={{ 
-                height: "clamp(300px, 50vh, 500px)",
-                overflow: "hidden"
+                height: "100vh",
+                top: "0",
+                right: "0",
+                width: "clamp(300px, 25vw, 400px)",
+                minHeight: "500px",
+                overflow: "hidden",
+                zIndex: 0
               }}
             >
               <img
@@ -203,10 +211,10 @@ export default function Home({ onLoginSuccess }) {
             
             {/* WhatsApp Icon */}
             <div
-              className="position-absolute"
+              className="position-fixed"
               style={{
-                bottom: "5%",
-                right: "5%",
+                bottom: "30px",
+                right: "30px",
                 width: "60px",
                 height: "60px",
                 backgroundColor: "#25D366",
@@ -214,12 +222,19 @@ export default function Home({ onLoginSuccess }) {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                boxShadow: "0 4px 15px rgba(37, 211, 102, 0.4)",
+                boxShadow: "0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 8px rgba(37, 211, 102, 0.2), 0 0 0 16px rgba(37, 211, 102, 0.1)",
                 cursor: "pointer",
-                transition: "transform 0.2s"
+                transition: "transform 0.2s, box-shadow 0.2s",
+                zIndex: 1000
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.1)"}
-              onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = "scale(1.1)";
+                e.currentTarget.style.boxShadow = "0 6px 25px rgba(37, 211, 102, 0.8), 0 0 0 10px rgba(37, 211, 102, 0.3), 0 0 0 20px rgba(37, 211, 102, 0.15)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.boxShadow = "0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 8px rgba(37, 211, 102, 0.2), 0 0 0 16px rgba(37, 211, 102, 0.1)";
+              }}
             >
               <img 
                 src={whatsappIcon} 
