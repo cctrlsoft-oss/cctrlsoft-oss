@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import Home from "./components/home";
-import LoginPage from "./pages/LoginPage";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { authService } from "./services/authService";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [showLogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,12 +20,10 @@ export default function App() {
   const handleLoginSuccess = (data) => {
     console.log('Login exitoso:', data);
     setIsAuthenticated(true);
-    setShowLogin(false);
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    setShowLogin(false);
   };
 
   if (loading) {
@@ -50,10 +46,6 @@ export default function App() {
     return <Dashboard onLogout={handleLogout} />;
   }
 
-  // Si no está autenticado
-  return (
-    <>
-      <Home />
-    </>
-  )
+  // Si no está autenticado, mostrar Home con Login integrado
+  return <Home onLoginSuccess={handleLoginSuccess} />;
 }
