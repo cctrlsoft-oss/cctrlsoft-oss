@@ -1,10 +1,14 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm/LoginForm";
+import AnimatedLetterC from "./AnimatedLetterC";
 import personLaptopImg from "../assets/images/person-laptop.jpg";
 import whatsappIcon from "../assets/images/WhatsApp_icon.png";
 
 export default function Home({ onLoginSuccess }) {
   const [showLogin, setShowLogin] = useState(false);
+  const whatsappUrl = `https://wa.me/573207779440?text=${encodeURIComponent(
+    "Vengo desde la web, quiero mas informacion."
+  )}`;
 
   return (
     <section className="bg-dark text-white min-vh-100" id="home-section" style={{ position: "relative", overflow: "hidden" }}>
@@ -28,7 +32,7 @@ export default function Home({ onLoginSuccess }) {
         </div>
       )}
 
-      {/* Login Button - Top Center */}
+      {/* Login Button - Top Center
       <div className="container-fluid py-3">
         <div className="row justify-content-center">
           <div className="col-auto">
@@ -41,7 +45,7 @@ export default function Home({ onLoginSuccess }) {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="container-fluid px-4" style={{ position: "relative" }}>
         <div className="row align-items-center justify-content-between g-4" style={{ minHeight: "calc(100vh - 120px)", position: "relative" }}>
@@ -54,18 +58,18 @@ export default function Home({ onLoginSuccess }) {
                 backgroundColor: "#2a2838",
                 width: "100%",
                 minHeight: "clamp(300px, 40vh, 400px)",
-                position: "relative"
+                position: "relative",
+                overflow: "hidden"
               }}
             >
-              <span 
-                className="fw-bold"
-                style={{ 
-                  color: "#ff0000",
-                  fontSize: "1.5rem"
+              <div
+                className="position-absolute"
+                style={{
+                  inset: "12px 14px 12px 12px",
                 }}
               >
-                animación 3D
-              </span>
+                <AnimatedLetterC />
+              </div>
               {/* Línea vertical púrpura */}
               <div 
                 className="position-absolute end-0 top-0"
@@ -210,8 +214,12 @@ export default function Home({ onLoginSuccess }) {
             </div>
             
             {/* WhatsApp Icon */}
-            <div
+            <a
               className="position-fixed"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Abrir WhatsApp"
               style={{
                 bottom: "30px",
                 right: "30px",
@@ -225,7 +233,8 @@ export default function Home({ onLoginSuccess }) {
                 boxShadow: "0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 8px rgba(37, 211, 102, 0.2), 0 0 0 16px rgba(37, 211, 102, 0.1)",
                 cursor: "pointer",
                 transition: "transform 0.2s, box-shadow 0.2s",
-                zIndex: 1000
+                zIndex: 1000,
+                textDecoration: "none"
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "scale(1.1)";
@@ -241,7 +250,7 @@ export default function Home({ onLoginSuccess }) {
                 alt="WhatsApp" 
                 style={{ width: "35px", height: "35px" }} 
               />
-            </div>
+            </a>
           </div>
 
         </div>
