@@ -80,30 +80,6 @@ export default function AnimatedLetterC() {
     letterMesh.receiveShadow = true;
     group.add(letterMesh);
 
-    const haloGeometry = new THREE.TorusGeometry(1.95, 0.06, 16, 120);
-    const haloMaterial = new THREE.MeshBasicMaterial({
-      color: "#12cd47",
-      transparent: true,
-      opacity: 0.55,
-    });
-    const halo = new THREE.Mesh(haloGeometry, haloMaterial);
-    halo.position.set(0, -0.1, -0.7);
-    halo.rotation.x = 0.35;
-    halo.rotation.z = -0.35;
-    group.add(halo);
-
-    const orbGeometry = new THREE.SphereGeometry(0.28, 32, 32);
-    const orbMaterial = new THREE.MeshStandardMaterial({
-      color: "#ff0000",
-      emissive: "#ff0000",
-      emissiveIntensity: 0.9,
-      roughness: 0.35,
-      metalness: 0.15,
-    });
-    const orb = new THREE.Mesh(orbGeometry, orbMaterial);
-    orb.position.set(-1.75, 1.2, -1.3);
-    group.add(orb);
-
     const pointer = { x: 0, y: 0 };
     const clock = new THREE.Clock();
     let animationFrameId = 0;
@@ -151,10 +127,6 @@ export default function AnimatedLetterC() {
       group.rotation.x += (targetRotationX - group.rotation.x) * 0.08;
       group.rotation.y += (targetRotationY - group.rotation.y) * 0.08;
       group.position.y = Math.sin(elapsed * 1.4) * 0.12;
-
-      halo.rotation.z += 0.01;
-      orb.position.y = 1.2 + Math.sin(elapsed * 2.2) * 0.12;
-      orb.position.x = -1.75 + Math.cos(elapsed * 1.7) * 0.08;
 
       renderer.render(scene, camera);
       animationFrameId = window.requestAnimationFrame(animate);

@@ -6,7 +6,7 @@ import whatsappIcon from "../assets/images/WhatsApp_icon.png";
 
 export default function Home({ onLoginSuccess }) {
   const [showLogin, setShowLogin] = useState(false);
-  const whatsappUrl = `https://wa.me/573207779440?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/573105260916?text=${encodeURIComponent(
     "Vengo desde la web, quiero mas informacion."
   )}`;
 
@@ -51,7 +51,7 @@ export default function Home({ onLoginSuccess }) {
         <div className="row align-items-center justify-content-between g-4" style={{ minHeight: "calc(100vh - 120px)", position: "relative" }}>
 
           {/* Panel Izquierdo - animacion 3D */}
-          <div className="col-12 col-lg-3 col-xl-2 d-flex align-items-center justify-content-center">
+          <div className="col-12 col-lg-3 col-xl-2 d-flex align-items-center justify-content-center home-hero-content">
             <div 
               className="rounded-4 p-4 text-center d-flex align-items-center justify-content-center"
               style={{ 
@@ -83,7 +83,7 @@ export default function Home({ onLoginSuccess }) {
           </div>
 
           {/* Centro - Desarrollo Web y CtrlSoft */}
-          <div className="col-12 col-lg-6 col-xl-7 d-flex align-items-center justify-content-center">
+          <div className="col-12 col-lg-6 col-xl-7 d-flex align-items-center justify-content-center home-hero-content">
             <div className="text-center text-lg-start w-100">
               <div className="d-flex align-items-center gap-3 mb-3">
                 <h3 className="color-pink-ctrlsoft fw-semibold mb-0" style={{ fontSize: "1.5rem" }}>
@@ -161,30 +161,12 @@ export default function Home({ onLoginSuccess }) {
           </div>
 
           {/* Derecha - Imagen con laptop y smartphone */}
-          <div className="col-12 col-lg-3 col-xl-3 position-relative" style={{ paddingRight: "0" }}>
-            <div 
-              className="position-fixed d-flex justify-content-end"
-              style={{ 
-                height: "100vh",
-                top: "0",
-                right: "0",
-                width: "clamp(300px, 25vw, 400px)",
-                minHeight: "500px",
-                overflow: "hidden",
-                zIndex: 0
-              }}
-            >
+          <div className="col-12 col-lg-3 col-xl-3 order-lg-last home-hero-content" style={{ paddingRight: "0" }}>
+            <div className="home-hero-image-wrap d-flex justify-content-end">
               <img
                 src={personLaptopImg}
                 alt="Persona usando laptop"
                 className="rounded-3"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                  clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)"
-                }}
               />
               
               {/* Smartphone overlay - solo visible en pantallas grandes */}
@@ -215,14 +197,12 @@ export default function Home({ onLoginSuccess }) {
             
             {/* WhatsApp Icon */}
             <a
-              className="position-fixed"
+              className="home-whatsapp-btn"
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer"
               aria-label="Abrir WhatsApp"
               style={{
-                bottom: "30px",
-                right: "30px",
                 width: "60px",
                 height: "60px",
                 backgroundColor: "#25D366",
@@ -233,7 +213,6 @@ export default function Home({ onLoginSuccess }) {
                 boxShadow: "0 4px 20px rgba(37, 211, 102, 0.6), 0 0 0 8px rgba(37, 211, 102, 0.2), 0 0 0 16px rgba(37, 211, 102, 0.1)",
                 cursor: "pointer",
                 transition: "transform 0.2s, box-shadow 0.2s",
-                zIndex: 1000,
                 textDecoration: "none"
               }}
               onMouseEnter={(e) => {
