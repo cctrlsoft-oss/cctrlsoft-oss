@@ -4,8 +4,10 @@ import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 import fontJson from "three/examples/fonts/helvetiker_bold.typeface.json";
 
-export default function AnimatedLetterC() {
+export default function AnimatedLetterC({ paused = false }) {
   const containerRef = useRef(null);
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -47,9 +49,13 @@ export default function AnimatedLetterC() {
     keyLight.castShadow = true;
     scene.add(keyLight);
 
-    const rimLight = new THREE.PointLight(0xe2a9f1, 24, 18, 2);
+    const rimLight = new THREE.PointLight(0xe2a9f1, 30, 18, 2);
     rimLight.position.set(-5, 1, -3);
     scene.add(rimLight);
+
+    const fillLight = new THREE.PointLight(0xc084fc, 16, 14, 2);
+    fillLight.position.set(3, -1, 5);
+    scene.add(fillLight);
 
     const font = new FontLoader().parse(fontJson);
     const letterGeometry = new TextGeometry("C", {
@@ -66,13 +72,13 @@ export default function AnimatedLetterC() {
     letterGeometry.center();
 
     const letterMaterial = new THREE.MeshPhysicalMaterial({
-      color: "#e2a9f1",
-      emissive: "#4b295c",
-      emissiveIntensity: 0.45,
-      metalness: 0.25,
-      roughness: 0.18,
+      color: "#f3e8ff",
+      emissive: "#7e22ce",
+      emissiveIntensity: 0.42,
+      metalness: 0.35,
+      roughness: 0.08,
       clearcoat: 1,
-      clearcoatRoughness: 0.15,
+      clearcoatRoughness: 0.06,
     });
 
     const letterMesh = new THREE.Mesh(letterGeometry, letterMaterial);
@@ -119,14 +125,20 @@ export default function AnimatedLetterC() {
     container.addEventListener("pointermove", handlePointerMove);
     container.addEventListener("pointerleave", handlePointerLeave);
 
-    const animate = () => {
-      const elapsed = clock.getElapsedTime();
-      const targetRotationX = -pointer.y * 0.28 + Math.sin(elapsed * 0.85) * 0.04;
-      const targetRotationY = pointer.x * 0.42 - 0.22;
+    let elapsed = 0;
 
-      group.rotation.x += (targetRotationX - group.rotation.x) * 0.08;
-      group.rotation.y += (targetRotationY - group.rotation.y) * 0.08;
-      group.position.y = Math.sin(elapsed * 1.4) * 0.12;
+    const animate = () => {
+      const delta = clock.getDelta();
+
+      if (!pausedRef.current) {
+        elapsed += delta;
+        const targetRotationX = -pointer.y * 0.28 + Math.sin(elapsed * 0.85) * 0.04;
+        const targetRotationY = pointer.x * 0.42 - 0.22;
+
+        group.rotation.x += (targetRotationX - group.rotation.x) * 0.08;
+        group.rotation.y += (targetRotationY - group.rotation.y) * 0.08;
+        group.position.y = Math.sin(elapsed * 1.4) * 0.12;
+      }
 
       renderer.render(scene, camera);
       animationFrameId = window.requestAnimationFrame(animate);

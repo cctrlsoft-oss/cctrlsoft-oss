@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import './App.css';
 import Home from "./components/home";
 import Dashboard from "./components/Dashboard/Dashboard";
 import { authService } from "./services/authService";
