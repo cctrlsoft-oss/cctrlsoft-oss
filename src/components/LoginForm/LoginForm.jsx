@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./LoginForm.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { authService } from "../../services/authService";
+import googleIcon from "../../assets/images/google.png";
 
 export default function LoginForm({ onLogin, onClose }) {
   const [username, setUsername] = useState("");
@@ -81,6 +82,13 @@ export default function LoginForm({ onLogin, onClose }) {
             padding: "10px"
           }}
         />
+      </div>
+
+      <div className="login-google">
+        <p className="login-google-label">Iniciar con</p>
+        <button type="button" className="login-google-btn" aria-label="Iniciar con Google">
+          <img src={googleIcon} alt="" />
+        </button>
       </div>
 
       <button 

@@ -9,3 +9,41 @@
   color: #e4e0e0;
   border-radius: 10px;
 }
+
+.login-google {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+
+.login-google-label {
+  margin: 0;
+  color: rgba(226, 169, 241, 0.85);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.login-google-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(226, 169, 241, 0.35);
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+
+.login-google-btn img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.login-google-btn:hover {
+  border-color: #e2a9f1;
+}

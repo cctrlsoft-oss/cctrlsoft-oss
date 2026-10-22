@@ -13,3 +13,4 @@ export default function LoginPage({ onBackClick, onLoginSuccess }) {
     </div>
   );
 }
+  
